@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc25ucs643ol8"]
+
+[ext_resource type="Script" uid="uid://dbawg6mtj0nvb" path="res://TheVale/Scripts/Script_TheCameraRig.cs" id="1_68ogb"]
+
+[node name="TheCameraRig" type="Node3D" node_paths=PackedStringArray("yaw", "pitch", "zoom", "roll")]
+script = ExtResource("1_68ogb")
+yaw = NodePath("Yaw")
+pitch = NodePath("Yaw/Pitch")
+zoom = NodePath("Yaw/Pitch/Zoom")
+roll = NodePath("Yaw/Pitch/Zoom/Roll")
+
+[node name="Yaw" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Pitch" type="Node3D" parent="Yaw"]
+transform = Transform3D(1, 0, 0, 0, 0.996194, 0.0871557, 0, -0.0871557, 0.996194, 0, 0, 0)
+
+[node name="Zoom" type="Node3D" parent="Yaw/Pitch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Roll" type="Node3D" parent="Yaw/Pitch/Zoom"]
+
+[node name="Camera3D" type="Camera3D" parent="Yaw/Pitch/Zoom/Roll"]
+fov = 50.0

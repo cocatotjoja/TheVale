@@ -1,0 +1,153 @@
+[gd_scene load_steps=3 format=3 uid="uid://c203afdiw0iu7"]
+
+[ext_resource type="Script" uid="uid://buolpdpawc6kp" path="res://TheVale/Scripts/Script_TheInGameUi.cs" id="1_hrtcy"]
+[ext_resource type="Texture2D" uid="uid://qrbe5yb2nxmh" path="res://TheVale/Assets/Art/OneFill.png" id="1_u4cny"]
+
+[node name="TheInGameUI" type="Control" node_paths=PackedStringArray("health", "stamina")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hrtcy")
+health = NodePath("OnScreenMenu/MarginContainer/StatBox/StatBoxBG/ProgressBarContainer/ProgressBarVBox/HealthContainer/HealthProgressBar")
+stamina = NodePath("OnScreenMenu/MarginContainer/StatBox/StatBoxBG/ProgressBarContainer/ProgressBarVBox/StaminaContainer/StaminaProgressBar")
+
+[node name="OnScreenMenu" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="OnScreenMenu"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="StatBox" type="MarginContainer" parent="OnScreenMenu/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="StatBoxBG" type="NinePatchRect" parent="OnScreenMenu/MarginContainer/StatBox"]
+custom_minimum_size = Vector2(400, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_u4cny")
+
+[node name="ProgressBarContainer" type="MarginContainer" parent="OnScreenMenu/MarginContainer/StatBox/StatBoxBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ProgressBarVBox" type="VBoxContainer" parent="OnScreenMenu/MarginContainer/StatBox/StatBoxBG/ProgressBarContainer"]
+custom_minimum_size = Vector2(180, 80)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HealthContainer" type="HBoxContainer" parent="OnScreenMenu/MarginContainer/StatBox/StatBoxBG/ProgressBarContainer/ProgressBarVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="HealthProgressBar" type="ProgressBar" parent="OnScreenMenu/MarginContainer/StatBox/StatBoxBG/ProgressBarContainer/ProgressBarVBox/HealthContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 80.0
+
+[node name="HealthSymbol" type="ColorRect" parent="OnScreenMenu/MarginContainer/StatBox/StatBoxBG/ProgressBarContainer/ProgressBarVBox/HealthContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.57, 0, 0, 1)
+
+[node name="StaminaContainer" type="HBoxContainer" parent="OnScreenMenu/MarginContainer/StatBox/StatBoxBG/ProgressBarContainer/ProgressBarVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="StaminaProgressBar" type="ProgressBar" parent="OnScreenMenu/MarginContainer/StatBox/StatBoxBG/ProgressBarContainer/ProgressBarVBox/StaminaContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 80.0
+
+[node name="StaminaSymbol" type="ColorRect" parent="OnScreenMenu/MarginContainer/StatBox/StatBoxBG/ProgressBarContainer/ProgressBarVBox/StaminaContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.562077, 0.91, 0.3458, 1)
+
+[node name="InventoryBox" type="MarginContainer" parent="OnScreenMenu/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="NinePatchRect" type="NinePatchRect" parent="OnScreenMenu/MarginContainer/InventoryBox"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_u4cny")
+
+[node name="MarginContainer" type="MarginContainer" parent="OnScreenMenu/MarginContainer/InventoryBox/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OnScreenMenu/MarginContainer/InventoryBox/NinePatchRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OnScreenMenu/MarginContainer/InventoryBox/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="InvSlot1" type="ColorRect" parent="OnScreenMenu/MarginContainer/InventoryBox/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InvSlot2" type="ColorRect" parent="OnScreenMenu/MarginContainer/InventoryBox/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="OnScreenMenu/MarginContainer/InventoryBox/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="InvSlot3" type="ColorRect" parent="OnScreenMenu/MarginContainer/InventoryBox/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InvSlot4" type="ColorRect" parent="OnScreenMenu/MarginContainer/InventoryBox/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_horizontal = 3

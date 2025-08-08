@@ -1,0 +1,86 @@
+[gd_resource type="VisualShader" load_steps=11 format=3 uid="uid://dpmv7rup4th4k"]
+
+[ext_resource type="Texture2D" uid="uid://c0a0harv6obje" path="res://TheVale/Assets/Textures/TheRuins/TheRuins_Graph_basecolor.png" id="1_qvbd0"]
+[ext_resource type="Texture2D" uid="uid://c3jea81sfwyqo" path="res://TheVale/Assets/Textures/TheRuins/TheRuins_Graph_ambientOcclusion.png" id="2_dsi0n"]
+[ext_resource type="Texture2D" uid="uid://bd86ieqewi5vf" path="res://TheVale/Assets/Textures/TheRuins/TheRuins_Graph_roughness.png" id="3_1wm31"]
+[ext_resource type="Texture2D" uid="uid://o5dtgvlfch14" path="res://TheVale/Assets/Textures/TheRuins/TheRuins_Graph_normal.png" id="4_k54u1"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_6qnew"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_k4j8e"]
+default_input_values = [1, Vector2(3, 3), 2, Vector2(0, 0)]
+function = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ugalk"]
+texture = ExtResource("1_qvbd0")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_k6eet"]
+texture = ExtResource("2_dsi0n")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_wo6xf"]
+texture = ExtResource("3_1wm31")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_cm6dy"]
+texture = ExtResource("4_k54u1")
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_frg_5;
+uniform sampler2D tex_frg_8;
+uniform sampler2D tex_frg_6;
+uniform sampler2D tex_frg_9;
+
+
+
+void fragment() {
+// Input:3
+	vec2 n_out3p0 = UV;
+
+
+// UVFunc:4
+	vec2 n_in4p1 = vec2(3.00000, 3.00000);
+	vec2 n_in4p2 = vec2(0.00000, 0.00000);
+	vec2 n_out4p0 = (n_out3p0 - n_in4p2) * n_in4p1 + n_in4p2;
+
+
+// Texture2D:5
+	vec4 n_out5p0 = texture(tex_frg_5, n_out4p0);
+
+
+// Texture2D:8
+	vec4 n_out8p0 = texture(tex_frg_8, n_out4p0);
+
+
+// Texture2D:6
+	vec4 n_out6p0 = texture(tex_frg_6, n_out4p0);
+
+
+// Texture2D:9
+	vec4 n_out9p0 = texture(tex_frg_9, n_out4p0);
+
+
+// Output:0
+	ALBEDO = vec3(n_out5p0.xyz);
+	ROUGHNESS = n_out8p0.x;
+	AO = n_out6p0.x;
+	NORMAL = vec3(n_out9p0.xyz);
+
+
+}
+"
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_6qnew")
+nodes/fragment/3/position = Vector2(-1680, 540)
+nodes/fragment/4/node = SubResource("VisualShaderNodeUVFunc_k4j8e")
+nodes/fragment/4/position = Vector2(-1220, 500)
+nodes/fragment/5/node = SubResource("VisualShaderNodeTexture_ugalk")
+nodes/fragment/5/position = Vector2(-120, -500)
+nodes/fragment/6/node = SubResource("VisualShaderNodeTexture_k6eet")
+nodes/fragment/6/position = Vector2(-120, 420)
+nodes/fragment/8/node = SubResource("VisualShaderNodeTexture_wo6xf")
+nodes/fragment/8/position = Vector2(-120, -40)
+nodes/fragment/9/node = SubResource("VisualShaderNodeTexture_cm6dy")
+nodes/fragment/9/position = Vector2(-120, 880)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 0, 4, 0, 5, 0, 5, 0, 0, 0, 4, 0, 6, 0, 4, 0, 8, 0, 4, 0, 9, 0, 9, 0, 0, 8, 6, 0, 0, 6, 8, 0, 0, 3)

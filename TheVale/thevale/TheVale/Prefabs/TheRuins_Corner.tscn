@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bd0s5u4x0mjmb"]
+
+[ext_resource type="Shader" uid="uid://c8d465aqt88r" path="res://TheVale/Assets/Shaders/Shader_TheRuinsNEW.tres" id="1_6tkyh"]
+[ext_resource type="ArrayMesh" uid="uid://cyvpxjbvbysf5" path="res://TheVale/Assets/Meshes/TheRuins_Corner.obj" id="2_krotw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_krotw"]
+render_priority = 0
+shader = ExtResource("1_6tkyh")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6tkyh"]
+data = PackedVector3Array(-3.0221, 7.1701, -3.0221, -3.739, 7.1701, -3.739, 6.761, 7.1701, -3.0221, 6.761, 7.1701, -3.0221, -3.739, 7.1701, -3.739, 6.761, 7.1701, -3.739, -3.0221, 7.1701, 6.761, -3.739, 7.1701, 6.761, -3.0221, 7.1701, -3.0221, -3.0221, 7.1701, -3.0221, -3.739, 7.1701, 6.761, -3.739, 7.1701, -3.739, -3.739, -0.001, 6.761, -3.739, 7.1701, 6.761, -3.0221, -0.001, 6.761, -3.0221, -0.001, 6.761, -3.739, 7.1701, 6.761, -3.0221, 7.1701, 6.761, 6.761, -0.001, -3.739, 6.761, 7.1701, -3.739, -3.739, -0.001, -3.739, -3.739, -0.001, -3.739, 6.761, 7.1701, -3.739, -3.739, 7.1701, -3.739, -3.739, -0.001, -3.739, -3.739, 7.1701, -3.739, -3.739, -0.001, 6.761, -3.739, -0.001, 6.761, -3.739, 7.1701, -3.739, -3.739, 7.1701, 6.761, 6.761, 7.1701, -3.0221, 6.761, 7.1701, -3.739, 6.761, -0.001, -3.0221, 6.761, -0.001, -3.0221, 6.761, 7.1701, -3.739, 6.761, -0.001, -3.739, -3.0221, 7.1701, -3.0221, -3.0221, -0.001, -3.0221, -3.0221, 7.1701, 6.761, -3.0221, 7.1701, 6.761, -3.0221, -0.001, -3.0221, -3.0221, -0.001, 6.761, -3.0221, 7.1701, -3.0221, 6.761, 7.1701, -3.0221, -3.0221, -0.001, -3.0221, -3.0221, -0.001, -3.0221, 6.761, 7.1701, -3.0221, 6.761, -0.001, -3.0221)
+
+[node name="TheRuins_Corner" type="StaticBody3D"]
+collision_layer = 2
+collision_mask = 7
+
+[node name="TheRuinsCorner" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_krotw")
+mesh = ExtResource("2_krotw")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConcavePolygonShape3D_6tkyh")

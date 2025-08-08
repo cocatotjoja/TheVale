@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://cspu824e7dl4m"]
+
+[ext_resource type="Script" uid="uid://c606xai5hlck0" path="res://TheVale/Scripts/Script_ThePlayer.cs" id="1_m8j65"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3pu5n"]
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6fc6x"]
+albedo_color = Color(0.891094, 0.459161, 0.493279, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_m8j65"]
+height = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3pu5n"]
+radius = 0.2
+height = 0.4
+
+[node name="ThePlayer" type="CharacterBody3D" node_paths=PackedStringArray("pivot", "collision")]
+collision_mask = 7
+script = ExtResource("1_m8j65")
+pivot = NodePath("Pivot")
+collision = NodePath("Collision")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_3pu5n")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Body" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+material_override = SubResource("StandardMaterial3D_6fc6x")
+mesh = SubResource("CapsuleMesh_m8j65")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot/Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.259974, -0.514969)
+mesh = SubResource("CapsuleMesh_3pu5n")
