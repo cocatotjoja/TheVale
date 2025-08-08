@@ -9,11 +9,14 @@ public partial class Script_ThePlayer : CharacterBody3D
 	Node3D collision;
 	[Export]
 	Node3D camera;
+	[Export]
+	Script_TheInGameUi inGameUI;
 
 	public float speed = 10.0f;
 	public float jumpVelocity = 30.5f;
 	public float health = 75.0f;
 	public float stamina = 90.0f;
+	public int[] inventory;
 
 	private Vector3 targetVelocity = Vector3.Zero;
 	private int fallAcceleration = 75;
@@ -23,6 +26,14 @@ public partial class Script_ThePlayer : CharacterBody3D
 	public override void _Ready()
 	{
 		startTimer = 2.0f;
+
+		//Create & Set Inventory slots
+		inventory = new int[4];
+		for (int i = 0; i < 4; i++)
+		{
+			inventory[i] = i + 1;
+			UpdateInventory(i);
+		}
 	}
 
 
@@ -52,7 +63,7 @@ public partial class Script_ThePlayer : CharacterBody3D
 			{
 				stamina++;
 			}
-			
+
 			// Walking
 			Vector3 direction = Vector3.Zero;
 			if (Input.IsActionPressed("Forward"))
@@ -118,5 +129,28 @@ public partial class Script_ThePlayer : CharacterBody3D
 			this.Velocity = targetVelocity;
 			MoveAndSlide();
 		}
+	}
+	public void UpdateInventory(int slot)
+	{
+		Color color = new Color(1, 1, 1, 1);
+
+		if (inventory[slot] == 1)
+		{
+			color = new Color(0.392157f, 0.584314f, 0.929412f, 1); // CORNFLOWER_BLUE
+		}
+		else if (inventory[slot] == 2)
+		{
+			color = new Color(0.941176f, 0.501961f, 0.501961f, 1); // LIGHT_CORAL
+		}
+		else if (inventory[slot] == 3)
+		{
+			color = new Color(0.6f, 0.196078f, 0.8f, 1); // DARK_ORCHID
+		}
+		else if (inventory[slot] == 4)
+		{
+			color = new Color(0.560784f, 0.737255f, 0.560784f, 1); // DARK_SEA_GREEN
+		}
+
+		inGameUI.ChangeInvSlot(slot, color);
 	}
 }

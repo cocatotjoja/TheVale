@@ -72,8 +72,9 @@ directional_shadow_max_distance = 200.0
 [node name="TheCameraRig" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_mtgqi")]
 player = NodePath("../ThePlayer")
 
-[node name="ThePlayer" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("4_51471")]
+[node name="ThePlayer" parent="." node_paths=PackedStringArray("camera", "inGameUI") instance=ExtResource("4_51471")]
 camera = NodePath("../TheCameraRig")
+inGameUI = NodePath("../TheInGameUI")
 
 [node name="TheStuff" type="Node" parent="."]
 

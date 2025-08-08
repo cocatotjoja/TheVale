@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://buolpdpawc6kp" path="res://TheVale/Scripts/Script_TheInGameUi.cs" id="1_hrtcy"]
 [ext_resource type="Texture2D" uid="uid://qrbe5yb2nxmh" path="res://TheVale/Assets/Art/OneFill.png" id="1_u4cny"]
 
-[node name="TheInGameUI" type="Control" node_paths=PackedStringArray("health", "stamina")]
+[node name="TheInGameUI" type="Control" node_paths=PackedStringArray("health", "stamina", "inv1", "inv2", "inv3", "inv4")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,10 @@ grow_vertical = 2
 script = ExtResource("1_hrtcy")
 health = NodePath("OnScreenMenu/MarginContainer/StatBox/StatBoxBG/ProgressBarContainer/ProgressBarVBox/HealthContainer/HealthProgressBar")
 stamina = NodePath("OnScreenMenu/MarginContainer/StatBox/StatBoxBG/ProgressBarContainer/ProgressBarVBox/StaminaContainer/StaminaProgressBar")
+inv1 = NodePath("OnScreenMenu/MarginContainer/InventoryBox/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/InvSlot1")
+inv2 = NodePath("OnScreenMenu/MarginContainer/InventoryBox/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/InvSlot2")
+inv3 = NodePath("OnScreenMenu/MarginContainer/InventoryBox/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2/InvSlot3")
+inv4 = NodePath("OnScreenMenu/MarginContainer/InventoryBox/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2/InvSlot4")
 
 [node name="OnScreenMenu" type="MarginContainer" parent="."]
 layout_mode = 1
