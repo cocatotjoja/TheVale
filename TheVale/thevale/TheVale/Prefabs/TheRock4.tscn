@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhr0a238dv3bp"]
+
+[ext_resource type="Shader" uid="uid://dynaxj7mxohj3" path="res://TheVale/Assets/Shaders/Shader_TheRocks.tres" id="1_tjjgd"]
+[ext_resource type="ArrayMesh" uid="uid://b3pfpe10hsq5r" path="res://TheVale/Assets/Meshes/Rock4.obj" id="2_tjjgd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ledar"]
+render_priority = 0
+shader = ExtResource("1_tjjgd")
+
+[node name="TheRock4" type="Node3D"]
+
+[node name="Rock4" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_ledar")
+mesh = ExtResource("2_tjjgd")

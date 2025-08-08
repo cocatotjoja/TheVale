@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d1tpxk1y50nhp"]
+[gd_scene load_steps=23 format=3 uid="uid://d1tpxk1y50nhp"]
 
 [ext_resource type="Script" uid="uid://d1g4k6s5qm48l" path="res://TheVale/Scripts/Script_TheVale.cs" id="1_qj0gd"]
 [ext_resource type="ArrayMesh" uid="uid://d4ku2aq13an0s" path="res://TheVale/Assets/Meshes/TheVale.obj" id="2_b0h7j"]
@@ -9,6 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://bd0s5u4x0mjmb" path="res://TheVale/Prefabs/TheRuins_Corner.tscn" id="6_m33r1"]
 [ext_resource type="PackedScene" uid="uid://bc25ucs643ol8" path="res://TheVale/Levels/Level_TheCameraRig.tscn" id="6_mtgqi"]
 [ext_resource type="PackedScene" uid="uid://c203afdiw0iu7" path="res://TheVale/Levels/Level_InGameUI.tscn" id="9_v33me"]
+[ext_resource type="PackedScene" uid="uid://c6xn4fhpqy7qq" path="res://TheVale/Prefabs/TheRock1.tscn" id="10_qaksh"]
+[ext_resource type="PackedScene" uid="uid://c2lwanvlls2ac" path="res://TheVale/Prefabs/TheRock2.tscn" id="11_kpyp4"]
+[ext_resource type="PackedScene" uid="uid://dswgmey5k242o" path="res://TheVale/Prefabs/TheRock3.tscn" id="12_86a7p"]
+[ext_resource type="PackedScene" uid="uid://bhr0a238dv3bp" path="res://TheVale/Prefabs/TheRock4.tscn" id="13_smw3u"]
 
 [sub_resource type="Gradient" id="Gradient_v33me"]
 offsets = PackedFloat32Array(0, 0.138211, 0.905149, 1)
@@ -138,3 +142,15 @@ transform = Transform3D(-0.0282531, -1.86265e-08, 0.999601, -2.09548e-09, 1, 0, 
 
 [node name="TheInGameUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_v33me")]
 player = NodePath("../ThePlayer")
+
+[node name="Rock1" parent="." instance=ExtResource("10_qaksh")]
+transform = Transform3D(1, 0, 0, 0, 0.991752, -0.128172, 0, 0.128172, 0.991752, -2.50359, 0.539081, -14.677)
+
+[node name="TheRock2" parent="." instance=ExtResource("11_kpyp4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.79853, 0.615981, -15.4807)
+
+[node name="TheRock3" parent="." instance=ExtResource("12_86a7p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.59766, 0.675589, -14.6531)
+
+[node name="TheRock4" parent="." instance=ExtResource("13_smw3u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35953, 0.702502, -13.3568)
