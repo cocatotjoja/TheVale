@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=11 format=3 uid="uid://c8d465aqt88r"]
 
-[ext_resource type="Texture2D" uid="uid://bbt2u3nrafcr4" path="res://TheVale/Assets/Textures/TheRuinsNEW/TheRuinsNEW_Graph_basecolor.png" id="1_fg23w"]
+[ext_resource type="Texture2D" uid="uid://b56b5gopifleu" path="res://TheVale/Assets/Textures/TheRuinsNEW/TheRuinsNEW_Graph_basecolor.png" id="1_fg23w"]
 [ext_resource type="Texture2D" uid="uid://fy8hofxydhhe" path="res://TheVale/Assets/Textures/TheRuinsNEW/TheRuinsNEW_Graph_roughness.png" id="2_cicky"]
 [ext_resource type="Texture2D" uid="uid://bkd0rmuvn5wn2" path="res://TheVale/Assets/Textures/TheRuinsNEW/TheRuinsNEW_Graph_ambientOcclusion.png" id="3_06hev"]
 [ext_resource type="Texture2D" uid="uid://crd47of1afba1" path="res://TheVale/Assets/Textures/TheRuinsNEW/TheRuinsNEW_Graph_normal.png" id="4_dmu38"]
@@ -14,12 +14,15 @@ function = 1
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_y7l5p"]
 texture = ExtResource("1_fg23w")
+texture_type = 1
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_r7k1n"]
 texture = ExtResource("2_cicky")
+texture_type = 1
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_qe4u2"]
 texture = ExtResource("3_06hev")
+texture_type = 1
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_q0dkp"]
 texture = ExtResource("4_dmu38")
@@ -28,9 +31,8 @@ texture = ExtResource("4_dmu38")
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
 
-uniform sampler2D tex_frg_5;
-uniform sampler2D tex_frg_6;
-uniform sampler2D tex_frg_7;
+uniform sampler2D tex_frg_5 : source_color;
+uniform sampler2D tex_frg_7 : source_color;
 uniform sampler2D tex_frg_8;
 
 
@@ -50,10 +52,6 @@ void fragment() {
 	vec4 n_out5p0 = texture(tex_frg_5, n_out4p0);
 
 
-// Texture2D:6
-	vec4 n_out6p0 = texture(tex_frg_6, n_out4p0);
-
-
 // Texture2D:7
 	vec4 n_out7p0 = texture(tex_frg_7, n_out4p0);
 
@@ -64,14 +62,13 @@ void fragment() {
 
 // Output:0
 	ALBEDO = vec3(n_out5p0.xyz);
-	ROUGHNESS = n_out6p0.x;
 	AO = n_out7p0.x;
 	NORMAL_MAP = vec3(n_out8p0.xyz);
 
 
 }
 "
-graph_offset = Vector2(-624.193, -97.8623)
+graph_offset = Vector2(-710.489, -29.2536)
 nodes/fragment/3/node = SubResource("VisualShaderNodeInput_6qnew")
 nodes/fragment/3/position = Vector2(-1680, 540)
 nodes/fragment/4/node = SubResource("VisualShaderNodeUVFunc_k4j8e")
@@ -84,4 +81,4 @@ nodes/fragment/7/node = SubResource("VisualShaderNodeTexture_qe4u2")
 nodes/fragment/7/position = Vector2(-340, 740)
 nodes/fragment/8/node = SubResource("VisualShaderNodeTexture_q0dkp")
 nodes/fragment/8/position = Vector2(-340, 1200)
-nodes/fragment/connections = PackedInt32Array(3, 0, 4, 0, 4, 0, 8, 0, 4, 0, 7, 0, 4, 0, 6, 0, 4, 0, 5, 0, 5, 0, 0, 0, 6, 0, 0, 3, 7, 0, 0, 6, 8, 0, 0, 9)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 0, 4, 0, 8, 0, 4, 0, 7, 0, 4, 0, 6, 0, 4, 0, 5, 0, 5, 0, 0, 0, 7, 0, 0, 6, 8, 0, 0, 9)

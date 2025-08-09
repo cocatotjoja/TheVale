@@ -1,12 +1,13 @@
 [gd_resource type="VisualShader" load_steps=11 format=3 uid="uid://h65in5p3qiu5"]
 
-[ext_resource type="Texture2D" uid="uid://d4m1byspp7l53" path="res://TheVale/Assets/Textures/TheWall/TheWall_graph_basecolor.png" id="1_rdkbo"]
+[ext_resource type="Texture2D" uid="uid://dhix3v67nqgj3" path="res://TheVale/Assets/Textures/TheWall/TheWall_graph_basecolor.png" id="1_rdkbo"]
 [ext_resource type="Texture2D" uid="uid://rddhelmphg7x" path="res://TheVale/Assets/Textures/TheWall/TheWall_graph_roughness.png" id="2_tflr3"]
 [ext_resource type="Texture2D" uid="uid://ew6pgs8pp24p" path="res://TheVale/Assets/Textures/TheWall/TheWall_graph_ambientOcclusion.png" id="3_hfpyn"]
 [ext_resource type="Texture2D" uid="uid://cia35b4te4hi6" path="res://TheVale/Assets/Textures/TheWall/TheWall_graph_normal.png" id="4_wg0yr"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_kpxxg"]
 texture = ExtResource("1_rdkbo")
+texture_type = 1
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_6qnew"]
 input_name = "uv"
@@ -17,21 +18,23 @@ function = 1
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_a0phb"]
 texture = ExtResource("2_tflr3")
+texture_type = 1
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_3vso8"]
 texture = ExtResource("3_hfpyn")
+texture_type = 1
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_2wd0e"]
 texture = ExtResource("4_wg0yr")
+texture_type = 2
 
 [resource]
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
 
-uniform sampler2D tex_frg_2;
-uniform sampler2D tex_frg_5;
-uniform sampler2D tex_frg_6;
-uniform sampler2D tex_frg_7;
+uniform sampler2D tex_frg_2 : source_color;
+uniform sampler2D tex_frg_6 : source_color;
+uniform sampler2D tex_frg_7 : hint_normal;
 
 
 
@@ -50,10 +53,6 @@ void fragment() {
 	vec4 n_out2p0 = texture(tex_frg_2, n_out4p0);
 
 
-// Texture2D:5
-	vec4 n_out5p0 = texture(tex_frg_5, n_out4p0);
-
-
 // Texture2D:6
 	vec4 n_out6p0 = texture(tex_frg_6, n_out4p0);
 
@@ -64,14 +63,13 @@ void fragment() {
 
 // Output:0
 	ALBEDO = vec3(n_out2p0.xyz);
-	ROUGHNESS = n_out5p0.x;
 	AO = n_out6p0.x;
 	NORMAL_MAP = vec3(n_out7p0.xyz);
 
 
 }
 "
-graph_offset = Vector2(-356.584, 57.5857)
+graph_offset = Vector2(-679.061, -103.646)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_kpxxg")
 nodes/fragment/2/position = Vector2(-180, -500)
 nodes/fragment/3/node = SubResource("VisualShaderNodeInput_6qnew")
@@ -84,4 +82,4 @@ nodes/fragment/6/node = SubResource("VisualShaderNodeTexture_3vso8")
 nodes/fragment/6/position = Vector2(-180, 420)
 nodes/fragment/7/node = SubResource("VisualShaderNodeTexture_2wd0e")
 nodes/fragment/7/position = Vector2(-180, 880)
-nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 4, 0, 4, 0, 2, 0, 4, 0, 5, 0, 4, 0, 6, 0, 4, 0, 7, 0, 5, 0, 0, 3, 6, 0, 0, 6, 7, 0, 0, 9)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 4, 0, 4, 0, 2, 0, 4, 0, 5, 0, 4, 0, 6, 0, 4, 0, 7, 0, 6, 0, 0, 6, 7, 0, 0, 9)

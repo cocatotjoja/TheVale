@@ -7,15 +7,19 @@
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ascxh"]
 texture = ExtResource("1_okfhg")
+texture_type = 1
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_60vlb"]
 texture = ExtResource("2_wkjdm")
+texture_type = 2
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_prsde"]
 texture = ExtResource("3_t80nc")
+texture_type = 1
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_v7s6o"]
 texture = ExtResource("4_8dqjo")
+texture_type = 1
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_6qnew"]
 input_name = "uv"
@@ -28,10 +32,9 @@ function = 1
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
 
-uniform sampler2D tex_frg_19;
-uniform sampler2D tex_frg_18;
-uniform sampler2D tex_frg_16;
-uniform sampler2D tex_frg_17;
+uniform sampler2D tex_frg_19 : source_color;
+uniform sampler2D tex_frg_16 : source_color;
+uniform sampler2D tex_frg_17 : hint_normal;
 
 
 
@@ -50,10 +53,6 @@ void fragment() {
 	vec4 n_out19p0 = texture(tex_frg_19, n_out4p0);
 
 
-// Texture2D:18
-	vec4 n_out18p0 = texture(tex_frg_18, n_out4p0);
-
-
 // Texture2D:16
 	vec4 n_out16p0 = texture(tex_frg_16, n_out4p0);
 
@@ -64,14 +63,13 @@ void fragment() {
 
 // Output:0
 	ALBEDO = vec3(n_out19p0.xyz);
-	ROUGHNESS = n_out18p0.x;
 	AO = n_out16p0.x;
 	NORMAL_MAP = vec3(n_out17p0.xyz);
 
 
 }
 "
-graph_offset = Vector2(-654.49, 58.5975)
+graph_offset = Vector2(-539.019, 75.2221)
 nodes/fragment/0/position = Vector2(400, 400)
 nodes/fragment/3/node = SubResource("VisualShaderNodeInput_6qnew")
 nodes/fragment/3/position = Vector2(-1580, 920)
@@ -85,4 +83,4 @@ nodes/fragment/18/node = SubResource("VisualShaderNodeTexture_prsde")
 nodes/fragment/18/position = Vector2(-320, 680)
 nodes/fragment/19/node = SubResource("VisualShaderNodeTexture_v7s6o")
 nodes/fragment/19/position = Vector2(-320, 220)
-nodes/fragment/connections = PackedInt32Array(3, 0, 4, 0, 19, 0, 0, 0, 18, 0, 0, 3, 16, 0, 0, 6, 4, 0, 19, 0, 4, 0, 18, 0, 4, 0, 16, 0, 4, 0, 17, 0, 17, 0, 0, 9)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 0, 19, 0, 0, 0, 16, 0, 0, 6, 4, 0, 19, 0, 4, 0, 18, 0, 4, 0, 16, 0, 4, 0, 17, 0, 17, 0, 0, 9)

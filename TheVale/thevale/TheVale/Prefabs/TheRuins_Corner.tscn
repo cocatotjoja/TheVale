@@ -19,5 +19,5 @@ material_override = SubResource("ShaderMaterial_krotw")
 mesh = ExtResource("2_krotw")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="TheRuinsCorner_Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("ConcavePolygonShape3D_6tkyh")

@@ -91,7 +91,7 @@ material_override = SubResource("ShaderMaterial_v33me")
 mesh = ExtResource("2_b0h7j")
 skeleton = NodePath("../../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TheStuff/TheLand"]
+[node name="TheLand_Collision" type="CollisionShape3D" parent="TheStuff/TheLand"]
 shape = SubResource("ConcavePolygonShape3D_tbhh7")
 
 [node name="TheWall" type="StaticBody3D" parent="TheStuff"]
@@ -103,7 +103,7 @@ material_override = SubResource("ShaderMaterial_ky610")
 mesh = ExtResource("5_tbhh7")
 skeleton = NodePath("../../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TheStuff/TheWall"]
+[node name="TheWall_Collision" type="CollisionShape3D" parent="TheStuff/TheWall"]
 visible = false
 shape = SubResource("ConcavePolygonShape3D_v33me")
 
@@ -143,14 +143,20 @@ transform = Transform3D(-0.0282531, -1.86265e-08, 0.999601, -2.09548e-09, 1, 0, 
 [node name="TheInGameUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_v33me")]
 player = NodePath("../ThePlayer")
 
-[node name="Rock1" parent="." instance=ExtResource("10_qaksh")]
-transform = Transform3D(1, 0, 0, 0, 0.991752, -0.128172, 0, 0.128172, 0.991752, -2.50359, 0.539081, -14.677)
+[node name="TheRock4" parent="." instance=ExtResource("13_smw3u")]
+transform = Transform3D(0.0312015, 0, -0.999513, 0, 1, 0, 0.999513, 0, 0.0312015, -8.46974, 0.487039, -3.05749)
+
+[node name="TheRock1" parent="TheRock4" instance=ExtResource("10_qaksh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60859, -0.109299, -0.980718)
+
+[node name="TheRock2" parent="TheRock4" instance=ExtResource("11_kpyp4")]
+transform = Transform3D(0.957153, 0.286353, 0.043133, -0.289583, 0.946476, 0.142567, 0, -0.148949, 0.988845, -1.46298, -0.086521, -2.68903)
+
+[node name="TheRock3" parent="TheRock4" instance=ExtResource("12_86a7p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.732249, -0.026913, -1.54588)
 
 [node name="TheRock2" parent="." instance=ExtResource("11_kpyp4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.79853, 0.615981, -15.4807)
+transform = Transform3D(0.561761, -0.143818, 0.814703, 0.248014, 0.968757, -7.45058e-09, -0.789249, 0.202057, 0.579879, 9.05396, 0.492507, -4.26457)
 
-[node name="TheRock3" parent="." instance=ExtResource("12_86a7p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.59766, 0.675589, -14.6531)
-
-[node name="TheRock4" parent="." instance=ExtResource("13_smw3u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35953, 0.702502, -13.3568)
+[node name="TheRock5" parent="." instance=ExtResource("13_smw3u")]
+transform = Transform3D(0.796878, 0, 0.60414, 0, 1, 0, -0.60414, 0, 0.796878, 9.66128, 0.383149, -2.99771)
