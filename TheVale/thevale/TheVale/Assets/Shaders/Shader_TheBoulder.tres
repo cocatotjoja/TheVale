@@ -1,0 +1,58 @@
+[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://dj7afvu5yl2wh"]
+
+[ext_resource type="Texture2D" uid="uid://idfpep7cdepu" path="res://TheVale/Assets/Textures/TheBoulder/Boulder_LOW_standardSurface1_BaseColor.png" id="1_mc3an"]
+[ext_resource type="Texture2D" uid="uid://bk1iuwdxsk07e" path="res://TheVale/Assets/Textures/TheBoulder/Boulder_LOW_standardSurface1_Normal.png" id="2_ptmpp"]
+[ext_resource type="Texture2D" uid="uid://ylct8efet8ia" path="res://TheVale/Assets/Textures/TheBoulder/Boulder_LOW_standardSurface1_Roughness.png" id="3_hd3r8"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ebb32"]
+texture = ExtResource("1_mc3an")
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_lqrd0"]
+texture = ExtResource("2_ptmpp")
+texture_type = 2
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_uni6r"]
+texture = ExtResource("3_hd3r8")
+texture_type = 1
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_frg_5 : source_color;
+uniform sampler2D tex_frg_7 : source_color;
+uniform sampler2D tex_frg_6 : hint_normal;
+
+
+
+void fragment() {
+// Texture2D:5
+	vec4 n_out5p0 = texture(tex_frg_5, UV);
+
+
+// Texture2D:7
+	vec4 n_out7p0 = texture(tex_frg_7, UV);
+
+
+// Texture2D:6
+	vec4 n_out6p0 = texture(tex_frg_6, UV);
+
+
+// Output:0
+	ALBEDO = vec3(n_out5p0.xyz);
+	ROUGHNESS = n_out7p0.x;
+	NORMAL_MAP = vec3(n_out6p0.xyz);
+
+
+}
+"
+graph_offset = Vector2(-656.11, 373.99)
+nodes/fragment/0/position = Vector2(400, 400)
+nodes/fragment/5/node = SubResource("VisualShaderNodeTexture_ebb32")
+nodes/fragment/5/position = Vector2(-400, 360)
+nodes/fragment/6/node = SubResource("VisualShaderNodeTexture_lqrd0")
+nodes/fragment/6/position = Vector2(-400, 1280)
+nodes/fragment/7/node = SubResource("VisualShaderNodeTexture_uni6r")
+nodes/fragment/7/position = Vector2(-400, 820)
+nodes/fragment/connections = PackedInt32Array(7, 0, 0, 3, 5, 0, 0, 0, 6, 0, 0, 9)

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cvjiy7815wemv"
+path="res://.godot/imported/TheBoulder.obj-be75b2c21dae6460e81c304642f33066.mesh"
+
+[deps]
+
+files=["res://.godot/imported/TheBoulder.obj-be75b2c21dae6460e81c304642f33066.mesh"]
+
+source_file="res://TheVale/Assets/Meshes/TheBoulder.obj"
+dest_files=["res://.godot/imported/TheBoulder.obj-be75b2c21dae6460e81c304642f33066.mesh", "res://.godot/imported/TheBoulder.obj-be75b2c21dae6460e81c304642f33066.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

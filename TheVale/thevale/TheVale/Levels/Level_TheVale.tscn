@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d1tpxk1y50nhp"]
+[gd_scene load_steps=24 format=3 uid="uid://d1tpxk1y50nhp"]
 
 [ext_resource type="Script" uid="uid://d1g4k6s5qm48l" path="res://TheVale/Scripts/Script_TheVale.cs" id="1_qj0gd"]
 [ext_resource type="ArrayMesh" uid="uid://d4ku2aq13an0s" path="res://TheVale/Assets/Meshes/TheVale.obj" id="2_b0h7j"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" uid="uid://h65in5p3qiu5" path="res://TheVale/Assets/Shaders/Shader_TheWall.tres" id="3_ky610"]
 [ext_resource type="PackedScene" uid="uid://cspu824e7dl4m" path="res://TheVale/Levels/Level_ThePlayer.tscn" id="4_51471"]
 [ext_resource type="ArrayMesh" uid="uid://c2oq2ij8rbnha" path="res://TheVale/Assets/Meshes/TheWallHIGH.obj" id="5_tbhh7"]
+[ext_resource type="PackedScene" uid="uid://cyf88213dvpwv" path="res://TheVale/Prefabs/TheBoulder.tscn" id="6_86a7p"]
 [ext_resource type="PackedScene" uid="uid://bd0s5u4x0mjmb" path="res://TheVale/Prefabs/TheRuins_Corner.tscn" id="6_m33r1"]
 [ext_resource type="PackedScene" uid="uid://bc25ucs643ol8" path="res://TheVale/Levels/Level_TheCameraRig.tscn" id="6_mtgqi"]
 [ext_resource type="PackedScene" uid="uid://c203afdiw0iu7" path="res://TheVale/Levels/Level_InGameUI.tscn" id="9_v33me"]
@@ -93,6 +94,9 @@ skeleton = NodePath("../../..")
 
 [node name="TheLand_Collision" type="CollisionShape3D" parent="TheStuff/TheLand"]
 shape = SubResource("ConcavePolygonShape3D_tbhh7")
+
+[node name="TheRock4" parent="TheStuff/TheLand" instance=ExtResource("6_86a7p")]
+transform = Transform3D(0.870226, 0.259641, -0.41868, 0.0171053, -0.86526, -0.501031, -0.492356, 0.428849, -0.757413, -10.7719, 0.357857, -13.1406)
 
 [node name="TheWall" type="StaticBody3D" parent="TheStuff"]
 collision_layer = 2
